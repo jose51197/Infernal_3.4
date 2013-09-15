@@ -36,7 +36,7 @@ static struct msm_camera_i2c_reg_conf imx105_groupoff_settings[] = {
 };
 
 static struct msm_camera_i2c_reg_conf imx105_mipi_settings[] = {
-/* Global Setting V4.1 From SONY */	
+	/* Global Setting V4.1 From SONY */	
 	{0x3031, 0x10},
 	{0x3064, 0x12},
 	{0x3087, 0x57},
@@ -75,7 +75,7 @@ static struct msm_camera_i2c_reg_conf imx105_prev_settings[] = {
 	{0x0307, 0x1C}, /*PLL_multiplier */
 	{0x303C, 0x4B},/*wait time for 24MHz MCLK*/
 
-/* Global Setting V4.1 From SONY */	
+	/* Global Setting V4.1 From SONY */	
 	{0x3031, 0x10},/*change to 01 for continous mode and 10 for non continous mode*/
 	{0x3064, 0x12},
 	{0x3087, 0x57},
@@ -103,18 +103,18 @@ static struct msm_camera_i2c_reg_conf imx105_prev_settings[] = {
 	{0x3408, 0x02}, 
 	{0x340A, 0x01}, 
 	{0x340C, 0x01},
-       {0x3081, 0x48},
-       {0x3400, 0x01}, /*[0]Damping control 0:Off, 1:On, [1]Independent standby control 0:Operation, 1:Standby*/
+	{0x3081, 0x48},
+	{0x3400, 0x01}, /*[0]Damping control 0:Off, 1:On, [1]Independent standby control 0:Operation, 1:Standby*/
 	{0x3401, 0x0F},
 	{0x3404, 0x17}, 
 	{0x3405, 0x00}, 
 
 	/*Preview mode*/
-       {0x0340, 0x04}, /*frame_length_lines_hi*/
-       {0x0341, 0xF2}, /*frame_length_lines_lo*/
-       {0x0342, 0x0D}, /*line_length_pclk_hi*/
+	{0x0340, 0x04}, /*frame_length_lines_hi*/
+	{0x0341, 0xF2}, /*frame_length_lines_lo*/
+	{0x0342, 0x0D}, /*line_length_pclk_hi*/
 	{0x0343, 0xD0}, /*line_length_pclk_lo*/
-       {0x0346, 0x00}, /*Y_addr_start_hi*/
+	{0x0346, 0x00}, /*Y_addr_start_hi*/
 	{0x0347, 0x24}, /*Y_addr_start_lo*/
 	{0x034a, 0x09}, /*y_add_end_hi*/
 	{0x034b, 0xC3}, /*y_add_end_lo*/
@@ -159,10 +159,10 @@ static struct msm_camera_i2c_reg_conf imx105_video_settings[] = {
 	/* PLL Setting EXTCLK=24MHz, PLL=876MHz */
 	{0x0305, 0x04}, /*Pre_PLL_clk_div*/
 	{0x0307, 0x92}, /*PLL_multiplier */
-       {0x30A4, 0x02}, /*Post_PLL_clk_div*/
+	{0x30A4, 0x02}, /*Post_PLL_clk_div*/
 	{0x303C, 0x4B},/*wait time for 24MHz MCLK*/
 
-       /* Global Setting V4.1 From SONY */
+	/* Global Setting V4.1 From SONY */
 	{0x3031, 0x10}, /*change to 01 for continous mode and 10 for non continous mode*/
 	{0x3064, 0x12},
 	{0x3087, 0x57},
@@ -185,16 +185,16 @@ static struct msm_camera_i2c_reg_conf imx105_video_settings[] = {
 	{0x314D, 0x2A},
 	{0x3343, 0x04},
 
-       {0x0340, 0x06}, /*frame_length_lines_hi*/
+	{0x0340, 0x06}, /*frame_length_lines_hi*/
 	{0x0341, 0xDE}, /*frame_length_lines_lo*/
-       {0x0342, 0x0D}, /*line_length_pclk_hi*/
+	{0x0342, 0x0D}, /*line_length_pclk_hi*/
 	{0x0343, 0x48}, /*line_length_pclk_lo*/
 	{0x0344, 0x00}, /*0x0344-0345 x_address_Start 0x0066=102*/
 	{0x0345, 0x66},  /*x_addr_start*/
-       {0x0346, 0x01}, /*0x0346-0347 Y_address_Start 0x0190=400*/
+	{0x0346, 0x01}, /*0x0346-0347 Y_address_Start 0x0190=400*/
 	{0x0347, 0x90}, /*y_addr_start*/
-       {0x0348, 0x0C},/*0x0348-0349 x_address_End 0x0c71=3185*/
-       {0x0349, 0x71}, /*x_add_end*/
+	{0x0348, 0x0C},/*0x0348-0349 x_address_End 0x0c71=3185*/
+	{0x0349, 0x71}, /*x_add_end*/
 	{0x034A, 0x08}, /*0x034A-034B Y_address_End 0x0857=2135*/
 	{0x034B, 0x57}, /*y_add_end*/
 	{0x034C, 0x0C}, /*x_output_size_msb*/
@@ -206,11 +206,11 @@ static struct msm_camera_i2c_reg_conf imx105_video_settings[] = {
 	{0x0385, 0x01}, /*y_even_inc*/
 	{0x0387, 0x01}, /*y_odd_inc*/
 	{0x3033, 0x00},
-       {0x303D, 0x70},
-       {0x303E, 0x41},
-       {0x3040, 0x08},
-       {0x3041, 0x89},
-       {0x3048, 0x00},
+	{0x303D, 0x70},
+	{0x303E, 0x41},
+	{0x3040, 0x08},
+	{0x3041, 0x89},
+	{0x3048, 0x00},
 	{0x304C, 0x50},
 	{0x304D, 0x03},
 	{0x306A, 0xD2},
@@ -221,9 +221,9 @@ static struct msm_camera_i2c_reg_conf imx105_video_settings[] = {
 	{0x30D5, 0x00},
 	{0x30D6, 0x85},
 	{0x30D7, 0x2A},
-       {0x30D8, 0x64},
-       {0x30D9, 0x89},
-       {0x30DE, 0x00},
+	{0x30D8, 0x64},
+	{0x30D9, 0x89},
+	{0x30DE, 0x00},
 	{0x3102, 0x10},
 	{0x3103, 0x44},
 	{0x3104, 0x40},
@@ -234,8 +234,8 @@ static struct msm_camera_i2c_reg_conf imx105_video_settings[] = {
 	{0x315D, 0x75},
 	{0x316E, 0x77},
 	{0x316F, 0x76},
-       {0x3301, 0x00},
-       {0x3318, 0x61},
+	{0x3301, 0x00},
+	{0x3318, 0x61},
 	{0x0202, 0x04}, /*0x0202-0203, 1 <= Coarse_Integration_time <= frame_length_lines -5*/
 	{0x0203, 0xED}
 };
@@ -247,10 +247,10 @@ static struct msm_camera_i2c_reg_conf imx105_fast_video_settings[] = {
 	/* PLL Setting EXTCLK=24MHz, PLL=672MHz */
 	{0x0305, 0x04}, /*Pre_PLL_clk_div*/
 	{0x0307, 0x70}, /*PLL_multiplier */
-       {0x30A4, 0x02}, /*Post_PLL_clk_div*/
+	{0x30A4, 0x02}, /*Post_PLL_clk_div*/
 	{0x303C, 0x4B},/*wait time for 24MHz MCLK*/
 
-       /* Global Setting V4.1 From SONY */
+	/* Global Setting V4.1 From SONY */
 	{0x3031, 0x10}, /*change to 01 for continous mode and 10 for non continous mode*/
 	{0x3064, 0x12},
 	{0x3087, 0x57},
@@ -281,8 +281,8 @@ static struct msm_camera_i2c_reg_conf imx105_fast_video_settings[] = {
 	{0x0345, 0x04},
 	{0x0346, 0x00},/*Y_addr_Start*/
 	{0x0347, 0xF8},
-       {0x0348, 0x0C},/*0x0348-0349 x_address_end*/
-       {0x0349, 0xD3},
+	{0x0348, 0x0C},/*0x0348-0349 x_address_end*/
+	{0x0349, 0xD3},
 	{0x034A, 0x08}, /*0x034A-034B y_address_end*/
 	{0x034B, 0xEF},
 	{0x034C, 0x06}, /*0x034C-034D x_output_size 0x0668*/
@@ -294,10 +294,10 @@ static struct msm_camera_i2c_reg_conf imx105_fast_video_settings[] = {
 	{0x0385, 0x05},
 	{0x0387, 0x03},
 	{0x3033, 0x84},
-       {0x303D, 0x70},
-       {0x303E, 0x40},
-       {0x3040, 0x08},
-       {0x3041, 0x97},
+	{0x303D, 0x70},
+	{0x303E, 0x40},
+	{0x3040, 0x08},
+	{0x3041, 0x97},
 	{0x3048, 0x01},
 	{0x304C, 0xB7},
 	{0x304D, 0x01},
@@ -322,7 +322,7 @@ static struct msm_camera_i2c_reg_conf imx105_fast_video_settings[] = {
 	{0x315D, 0x49},
 	{0x316E, 0x4B},
 	{0x316F, 0x4A},
-       {0x3301, 0x00},
+	{0x3301, 0x00},
 	{0x3318, 0x62},
 	{0x0202, 0x04}, /*0x0202-0203, 1 <= Coarse_Integration_time <= frame_length_lines -5*/
 	{0x0203, 0xED}
@@ -333,10 +333,10 @@ static struct msm_camera_i2c_reg_conf imx105_snap_settings[] = {
 	/* PLL Setting EXTCLK=24MHz, PLL=876MHz */
 	{0x0305, 0x04}, /*Pre_PLL_clk_div*/
 	{0x0307, 0x92}, /*PLL_multiplier */
-       {0x30A4, 0x02}, /*Post_PLL_clk_div*/
+	{0x30A4, 0x02}, /*Post_PLL_clk_div*/
 	{0x303C, 0x4B},/*wait time for 24MHz MCLK*/
 
-/* Global Setting V4.1 From SONY */
+	/* Global Setting V4.1 From SONY */
 	{0x3031, 0x10}, /*change to 01 for continous mode and 10 for non continous mode*/
 	{0x3064, 0x12},
 	{0x3087, 0x57},
@@ -367,8 +367,8 @@ static struct msm_camera_i2c_reg_conf imx105_snap_settings[] = {
 	{0x0345, 0x04},
 	{0x0346, 0x00},
 	{0x0347, 0x24},
-       {0x0348, 0x0C},
-       {0x0349, 0xD3},
+	{0x0348, 0x0C},
+	{0x0349, 0xD3},
 	{0x034A, 0x09},
 	{0x034B, 0xC3},
 	{0x034C, 0x0C}, /*0x034C-034D X_output_size 0x0CD0=3280*/
@@ -379,11 +379,11 @@ static struct msm_camera_i2c_reg_conf imx105_snap_settings[] = {
 	{0x0383, 0x01}, /*x_odd_inc*/
 	{0x0385, 0x01}, /*y_even_inc*/
 	{0x0387, 0x01}, /*y_odd_inc*/
-       {0x3033, 0x00},
-       {0x303D, 0x70},
-       {0x303E, 0x41},
-       {0x3040, 0x08},
-       {0x3041, 0x89},
+	{0x3033, 0x00},
+	{0x303D, 0x70},
+	{0x303E, 0x41},
+	{0x3040, 0x08},
+	{0x3041, 0x89},
 	{0x3048, 0x00},
 	{0x304C, 0x50},
 	{0x304D, 0x03},
@@ -420,7 +420,7 @@ static struct msm_camera_i2c_reg_conf imx105_recommend_settings[] = {
 	{0x0307, 0x1C}, /*PLL_multiplier */
 	{0x303C, 0x4B},/*wait time for 24MHz MCLK*/
 
-/* Global Setting V4.1 From SONY */	
+	/* Global Setting V4.1 From SONY */	
 	{0x3031, 0x10}, /*change to 01 for continous mode and 10 for non continous mode*/
 	{0x3064, 0x12},
 	{0x3087, 0x57},
@@ -448,10 +448,10 @@ static struct msm_camera_i2c_reg_conf imx105_recommend_settings[] = {
 	{0x3408, 0x02}, 
 	{0x340A, 0x01},
 	{0x340C, 0x01},
-       {0x3081, 0x48},
+	{0x3081, 0x48},
 	{0x3400, 0x01}, 
-       {0x3401, 0x0F},
-       {0x3404, 0x17}, 
+	{0x3401, 0x0F},
+	{0x3404, 0x17}, 
 	{0x3405, 0x00},  
 
 	/* Black level Setting */
@@ -460,32 +460,32 @@ static struct msm_camera_i2c_reg_conf imx105_recommend_settings[] = {
 
 static struct v4l2_subdev_info imx105_subdev_info[] = {
 	{
-	.code   = V4L2_MBUS_FMT_SBGGR10_1X10,
-	.colorspace = V4L2_COLORSPACE_JPEG,
-	.fmt    = 1,
-	.order    = 0,
+		.code   = V4L2_MBUS_FMT_SBGGR10_1X10,
+		.colorspace = V4L2_COLORSPACE_JPEG,
+		.fmt    = 1,
+		.order    = 0,
 	},
 	/* more can be supported, to be added later */
 };
 
 static struct msm_camera_i2c_conf_array imx105_init_conf[] = {
 	{&imx105_mipi_settings[0],
-	ARRAY_SIZE(imx105_mipi_settings), 0, MSM_CAMERA_I2C_BYTE_DATA},
+		ARRAY_SIZE(imx105_mipi_settings), 0, MSM_CAMERA_I2C_BYTE_DATA},
 	{&imx105_recommend_settings[0],
-	ARRAY_SIZE(imx105_recommend_settings), 0, MSM_CAMERA_I2C_BYTE_DATA},
+		ARRAY_SIZE(imx105_recommend_settings), 0, MSM_CAMERA_I2C_BYTE_DATA},
 	{&imx105_pll_settings[0],
-	ARRAY_SIZE(imx105_pll_settings), 0, MSM_CAMERA_I2C_BYTE_DATA},	
+		ARRAY_SIZE(imx105_pll_settings), 0, MSM_CAMERA_I2C_BYTE_DATA},	
 };
 
 static struct msm_camera_i2c_conf_array imx105_confs[] = {
 	{&imx105_snap_settings[0],
-	ARRAY_SIZE(imx105_snap_settings), 0, MSM_CAMERA_I2C_BYTE_DATA},
+		ARRAY_SIZE(imx105_snap_settings), 0, MSM_CAMERA_I2C_BYTE_DATA},
 	{&imx105_prev_settings[0],
-	ARRAY_SIZE(imx105_prev_settings), 0, MSM_CAMERA_I2C_BYTE_DATA},
+		ARRAY_SIZE(imx105_prev_settings), 0, MSM_CAMERA_I2C_BYTE_DATA},
 	{&imx105_video_settings[0],
-	ARRAY_SIZE(imx105_video_settings), 0, MSM_CAMERA_I2C_BYTE_DATA},
+		ARRAY_SIZE(imx105_video_settings), 0, MSM_CAMERA_I2C_BYTE_DATA},
 	{&imx105_fast_video_settings[0],
-	ARRAY_SIZE(imx105_fast_video_settings), 0, MSM_CAMERA_I2C_BYTE_DATA},	
+		ARRAY_SIZE(imx105_fast_video_settings), 0, MSM_CAMERA_I2C_BYTE_DATA},	
 };
 
 static struct msm_sensor_output_info_t imx105_dimensions[] = {
@@ -511,7 +511,7 @@ static struct msm_sensor_output_info_t imx105_dimensions[] = {
 		.x_output = 0xC0C,//3
 		.y_output = 0x6C8,
 		.line_length_pclk = 0xD48,
-              .frame_length_lines = 0x6DE, /* Tom 20120215 changed to fix video frame not in sync issue*/
+		.frame_length_lines = 0x6DE, /* Tom 20120215 changed to fix video frame not in sync issue*/
 		.vt_pixel_clk = 175200000,
 		.op_pixel_clk = 175200000,
 		.binning_factor = 1,
@@ -574,47 +574,15 @@ static struct msm_sensor_exp_gain_info_t imx105_exp_gain_info = {
 	.min_vert = 4, /* min coarse integration time */ /* HTC Angie 20111019 - Fix FPS */	
 };
 
-static int imx105_sensor_config(void __user *argp)
-{
-	return msm_sensor_config(&imx105_s_ctrl, argp);
-}
-
-
 static int imx105_sensor_open_init(const struct msm_camera_sensor_info *data)
 {
-	int rc;
+	int rc = 0;
 	uint16_t value = 0;
 
 	pr_info("%s\n", __func__);
 
-/*HTC Start Tom Lin 2012/1/13*/
-#ifdef CONFIG_RAWCHIP
-			pr_info("%s : CONFIG_RAWCHIP = y\n", __func__);
-		if (data->use_rawchip)
-			rawchip_vreg_enable();
-#endif
-
-	rc = msm_camio_clk_enable(CAMIO_CAM_MCLK_CLK);
-	if (rc < 0) {
-		pr_err("%s: msm_camio_sensor_clk_on failed:%d\n",
-		 __func__, rc);
-		return rc;
-	}
-
-#ifdef CONFIG_RAWCHIP
-	if (data->use_rawchip)
-		rawchip_open_init();
-#endif	
-/*HTC End Tom Lin 2012/1/13*/
-	
 	if (data->sensor_platform_info)
 		imx105_s_ctrl.mirror_flip = data->sensor_platform_info->mirror_flip;
-
-	rc = msm_sensor_open_init(&imx105_s_ctrl, data);
-	if (rc < 0) {
-		pr_err("%s failed to imx105 sensor open init\n", __func__);
-		return rc;
-	}
 
 	/* Apply sensor mirror/flip */
 	if (imx105_s_ctrl.mirror_flip == CAMERA_SENSOR_MIRROR_FLIP)
@@ -630,34 +598,9 @@ static int imx105_sensor_open_init(const struct msm_camera_sensor_info *data)
 
 
 	msm_camera_i2c_write(imx105_s_ctrl.sensor_i2c_client,
-		IMX105_REG_READ_MODE, value, MSM_CAMERA_I2C_BYTE_DATA);
-	
-	return rc;
-}
-
-static int imx105_sensor_release(void)
-{
-/*HTC Start Tom Lin 2012/1/13*/
-	int	rc = 0;
-	rc = msm_sensor_release(&imx105_s_ctrl);
-
-#ifdef CONFIG_RAWCHIP
-	if (imx105_s_ctrl.sensordata->use_rawchip)
-		rawchip_release();
-#endif
-	rc = msm_camio_clk_disable(CAMIO_CAM_MCLK_CLK);
-	if (rc < 0)
-		pr_err("%s: msm_camio_sensor_clk_off failed:%d\n",
-			 __func__, rc);
-
-
-#ifdef CONFIG_RAWCHIP
-	if (imx105_s_ctrl.sensordata->use_rawchip)
-		rawchip_vreg_disable();
-#endif
+			IMX105_REG_READ_MODE, value, MSM_CAMERA_I2C_BYTE_DATA);
 
 	return rc;
-/*HTC End Tom Lin 2012/1/13*/
 }
 
 static const char *imx105Vendor = "sony";
@@ -686,7 +629,7 @@ static int imx105_sysfs_init(void)
 	android_imx105 = kobject_create_and_add("android_camera", NULL);
 	if (android_imx105 == NULL) {
 		pr_info("imx105_sysfs_init: subsystem_register " \
-		"failed\n");
+				"failed\n");
 		ret = -ENOMEM;
 		return ret ;
 	}
@@ -694,11 +637,23 @@ static int imx105_sysfs_init(void)
 	ret = sysfs_create_file(android_imx105, &dev_attr_sensor.attr);
 	if (ret) {
 		pr_info("imx105_sysfs_init: sysfs_create_file " \
-		"failed\n");
+				"failed\n");
 		kobject_del(android_imx105);
 	}
 
 	return 0 ;
+}
+
+int32_t imx105_i2c_probe(struct i2c_client *client,
+		const struct i2c_device_id *id)
+{
+	int	rc = 0;
+	pr_info("%s\n", __func__);
+	rc = msm_sensor_i2c_probe(client, id);
+	if(rc >= 0)
+		imx105_sysfs_init();
+	pr_info("%s: rc(%d)\n", __func__, rc);
+	return rc;
 }
 
 static const struct i2c_device_id imx105_i2c_id[] = {
@@ -708,7 +663,7 @@ static const struct i2c_device_id imx105_i2c_id[] = {
 
 static struct i2c_driver imx105_i2c_driver = {
 	.id_table = imx105_i2c_id,
-	.probe  = msm_sensor_i2c_probe,
+	.probe  = imx105_i2c_probe,
 	.driver = {
 		.name = SENSOR_NAME,
 	},
@@ -728,21 +683,21 @@ int32_t msm_camera_i2c_write_lens_position(int16_t lens_position)
 	pr_info("%s lens_position %d\n", __func__, lens_position);
 
 
-       s_ctrl->func_tbl->sensor_group_hold_on(s_ctrl);
+	s_ctrl->func_tbl->sensor_group_hold_on(s_ctrl);
 
 	rc = msm_camera_i2c_write(s_ctrl->sensor_i2c_client,
-		0x3403,
-		((lens_position & 0x0300) >> 8),
-		MSM_CAMERA_I2C_BYTE_DATA);
+			0x3403,
+			((lens_position & 0x0300) >> 8),
+			MSM_CAMERA_I2C_BYTE_DATA);
 	if (rc < 0) {
 		pr_err("%s VCM_CODE_MSB i2c write failed (%d)\n", __func__, rc);
 		return rc;
 	}
 
 	rc = msm_camera_i2c_write(s_ctrl->sensor_i2c_client,
-		0x3402,
-		(lens_position & 0x00FF),
-		MSM_CAMERA_I2C_BYTE_DATA);
+			0x3402,
+			(lens_position & 0x00FF),
+			MSM_CAMERA_I2C_BYTE_DATA);
 	if (rc < 0) {
 		pr_err("%s VCM_CODE_LSB i2c write failed (%d)\n", __func__, rc);
 		return rc;
@@ -753,68 +708,18 @@ int32_t msm_camera_i2c_write_lens_position(int16_t lens_position)
 	return rc;
 }
 
-/*Tom end 20120215 to fix AF issue by using sensor i2c driver client to write next lens position*/
-
-static int imx105_sensor_v4l2_probe(const struct msm_camera_sensor_info *info,
-	struct v4l2_subdev *sdev, struct msm_sensor_ctrl *s)
-{
-/*HTC Start Tom Lin 2012/1/13*/
-	int rc = -EINVAL;
-
-#ifdef CONFIG_RAWCHIP
-	const struct msm_camera_sensor_info *sdata = info;
-
-	if (sdata->use_rawchip) {
-		rc = rawchip_vreg_enable();
-		if (rc < 0) {
-			return rc;
-		}
-	}
-#endif
-
-	rc = msm_camio_clk_enable(CAMIO_CAM_MCLK_CLK);
-	if (rc < 0) {
-#ifdef CONFIG_RAWCHIP
-		if (sdata->use_rawchip)
-			rawchip_vreg_disable();
-#endif
-		return rc;
-	}
-
-#ifdef CONFIG_RAWCHIP
-	if (sdata->use_rawchip) {
-		rc = Yushan_common_init();
-		if (rc < 0) {
-			msm_camio_clk_disable(CAMIO_CAM_MCLK_CLK);
-			if (sdata->use_rawchip)
-				rawchip_vreg_disable();
-			return rc;
-		}
-	}
-#endif
-
-	rc = msm_sensor_v4l2_probe(&imx105_s_ctrl, info, sdev, s);
-
-#ifdef CONFIG_RAWCHIP
-	if (sdata->use_rawchip)
-		Yushan_common_deinit();
-#endif
-
-	msm_camio_clk_disable(CAMIO_CAM_MCLK_CLK);
-
-#ifdef CONFIG_RAWCHIP
-	if (sdata->use_rawchip)
-		rawchip_vreg_disable();
-#endif
-
-	return rc;
-/*HTC End Tom Lin 2012/1/13*/
-}
-
-int32_t imx105_power_up(const struct msm_camera_sensor_info *sdata)
+int32_t imx105_power_up(struct msm_sensor_ctrl_t *s_ctrl)
 {
 	int rc;
+	struct msm_camera_sensor_info *sdata = NULL;
 	pr_info("%s\n", __func__);
+
+	if (s_ctrl && s_ctrl->sensordata)
+		sdata = s_ctrl->sensordata;
+	else {
+		pr_info("%s: failed to s_ctrl sensordata NULL\n", __func__);
+		return (-1);
+	}
 
 	if (sdata->camera_power_on == NULL) {
 		pr_err("sensor platform_data didnt register\n");
@@ -824,15 +729,52 @@ int32_t imx105_power_up(const struct msm_camera_sensor_info *sdata)
 	rc = sdata->camera_power_on();
 	if (rc < 0) {
 		pr_err("%s failed to enable power\n", __func__);
-		return rc;
+		goto enable_power_on_failed;
 	}
-	return msm_sensor_power_up(sdata);
+
+	if (!sdata->use_rawchip) {
+		rc = msm_camio_clk_enable(CAMIO_CAM_MCLK_CLK);
+		if (rc < 0) {
+			pr_info("%s: msm_camio_sensor_clk_on failed:%d\n",
+					__func__, rc);
+			goto enable_mclk_failed;
+		}
+	}
+
+	rc = msm_sensor_set_power_up(s_ctrl);
+	if (rc < 0) {
+		pr_info("%s msm_sensor_power_up failed\n", __func__);
+		goto enable_sensor_power_up_failed;
+	}
+
+	imx105_sensor_open_init(sdata);
+	pr_info("%s end\n", __func__);
+
+	return rc;
+
+enable_sensor_power_up_failed:
+	if (sdata->camera_power_off == NULL)
+		pr_info("%s: failed to sensor platform_data didnt register\n", __func__);
+	else
+		sdata->camera_power_off();
+enable_power_on_failed:
+	msm_camio_clk_disable(CAMIO_CAM_MCLK_CLK);
+enable_mclk_failed:
+	return rc;
 }
 
-int32_t imx105_power_down(const struct msm_camera_sensor_info *sdata)
+int32_t imx105_power_down(struct msm_sensor_ctrl_t *s_ctrl)
 {
 	int rc;
+	struct msm_camera_sensor_info *sdata = NULL;
 	pr_info("%s\n", __func__);
+
+	if (s_ctrl && s_ctrl->sensordata)
+		sdata = s_ctrl->sensordata;
+	else {
+		pr_info("%s: failed to s_ctrl sensordata NULL\n", __func__);
+		return (-1);
+	}
 
 	if (sdata->camera_power_off == NULL) {
 		pr_err("sensor platform_data didnt register\n");
@@ -844,33 +786,28 @@ int32_t imx105_power_down(const struct msm_camera_sensor_info *sdata)
 		pr_err("%s failed to disable power\n", __func__);
 		return rc;
 	}
-	return msm_sensor_power_down(sdata);
-}
 
-static int imx105_probe(struct platform_device *pdev)
-{
-	int	rc = 0;
+	mdelay(1);
+	if (!sdata->use_rawchip) {
+		rc = msm_camio_clk_disable(CAMIO_CAM_MCLK_CLK);
+		if (rc < 0)
+			pr_info("%s: msm_camio_sensor_clk_off failed:%d\n",
+					__func__, rc);
+	}
+	mdelay(1);
 
-	pr_info("[CAM]:imx105 %s\n", __func__);
-	rc = msm_sensor_register(pdev, imx105_sensor_v4l2_probe);
+	rc = msm_sensor_set_power_down(s_ctrl);
+	if (rc < 0)
+		pr_info("%s: msm_sensor_power_down failed\n", __func__);
+	mdelay(1);
 
-	if(rc >= 0)
-		imx105_sysfs_init();
 	return rc;
 }
-
-struct platform_driver imx105_driver = {
-	.probe = imx105_probe,
-	.driver = {
-		.name = PLATFORM_DRIVER_NAME,
-		.owner = THIS_MODULE,
-	},
-};
 
 static int __init msm_sensor_init_module(void)
 {
 	pr_info("[CAM]:imx105 %s\n", __func__);
-	return platform_driver_register(&imx105_driver);
+	return i2c_add_driver(&imx105_i2c_driver);
 }
 
 static struct v4l2_subdev_core_ops imx105_subdev_core_ops;
@@ -885,7 +822,7 @@ static struct v4l2_subdev_ops imx105_subdev_ops = {
 
 /*HTC_START*/
 static int imx105_read_fuseid(struct sensor_cfg_data *cdata,
-	struct msm_sensor_ctrl_t *s_ctrl)
+		struct msm_sensor_ctrl_t *s_ctrl)
 {
 
 
@@ -904,26 +841,26 @@ static int imx105_read_fuseid(struct sensor_cfg_data *cdata,
 		if (rc < 0)
 			pr_err("[CAM]%s: i2c_write_b 0x34C9 (select info_index %d) fail\n", __func__, info_index);
 
-/*HTC start Tom change back to read word*/
+		/*HTC start Tom change back to read word*/
 		/* read Information 0~9 according to SPEC*/
 		rc = msm_camera_i2c_read(imx105_msm_camera_i2c_client,0x3500, &info_value,2);
 		if (rc < 0)
 			pr_err("[CAM]%s: i2c_read 0x3500 fail\n", __func__);
-		
+
 		OTP[info_index] = (unsigned short)((info_value & 0xFF00) >>8);
-              info_index++;
+		info_index++;
 		OTP[info_index] = (unsigned short)(info_value & 0x00FF);
 		info_value = 0;
-/*HTC end Tom change back to read word*/
+		/*HTC end Tom change back to read word*/
 	}
 
 	pr_info("[CAM]%s: VenderID=%x,LensID=%x,SensorID=%x%x\n", __func__,
-		OTP[0], OTP[1], OTP[2], OTP[3]);
+			OTP[0], OTP[1], OTP[2], OTP[3]);
 	pr_info("[CAM]%s: ModuleFuseID= %x%x%x%x%x%x\n", __func__,
-		OTP[4], OTP[5], OTP[6], OTP[7], OTP[8], OTP[9]);
+			OTP[4], OTP[5], OTP[6], OTP[7], OTP[8], OTP[9]);
 
-       cdata->cfg.fuse.fuse_id_word1 = 0;
-       cdata->cfg.fuse.fuse_id_word2 = 0;
+	cdata->cfg.fuse.fuse_id_word1 = 0;
+	cdata->cfg.fuse.fuse_id_word2 = 0;
 	cdata->cfg.fuse.fuse_id_word3 = (OTP[0]);
 	cdata->cfg.fuse.fuse_id_word4 =
 		(OTP[4]<<20) |
@@ -932,16 +869,16 @@ static int imx105_read_fuseid(struct sensor_cfg_data *cdata,
 		(OTP[7]<<8) |
 		(OTP[8]<<4) |
 		(OTP[9]);
-/*
-	pr_info("[CAM]imx105: fuse->fuse_id_word1:%d\n",
-		cdata->cfg.fuse.fuse_id_word1);
-	pr_info("[CAM]imx105: fuse->fuse_id_word2:%d\n",
-		cdata->cfg.fuse.fuse_id_word2);
-	pr_info("[CAM]imx105: fuse->fuse_id_word3:0x%08x\n",
-		cdata->cfg.fuse.fuse_id_word3);
-	pr_info("[CAM]imx105: fuse->fuse_id_word4:0x%08x\n",
-		cdata->cfg.fuse.fuse_id_word4);
-*/		
+	/*
+	   pr_info("[CAM]imx105: fuse->fuse_id_word1:%d\n",
+	   cdata->cfg.fuse.fuse_id_word1);
+	   pr_info("[CAM]imx105: fuse->fuse_id_word2:%d\n",
+	   cdata->cfg.fuse.fuse_id_word2);
+	   pr_info("[CAM]imx105: fuse->fuse_id_word3:0x%08x\n",
+	   cdata->cfg.fuse.fuse_id_word3);
+	   pr_info("[CAM]imx105: fuse->fuse_id_word4:0x%08x\n",
+	   cdata->cfg.fuse.fuse_id_word4);
+	   */		
 	pr_info("%s: sensor OTP information: X \n", __func__);
 
 
@@ -951,14 +888,14 @@ static int imx105_read_fuseid(struct sensor_cfg_data *cdata,
 /* HTC_END*/
 
 int32_t imx105_sensor_write_exp_gain(struct msm_sensor_ctrl_t *s_ctrl,
-		int mode, uint16_t gain, uint16_t dig_gain, uint32_t line) /* HTC Angie 20111019 - Fix FPS */
+		uint16_t gain, uint32_t line) /* HTC Angie 20111019 - Fix FPS */
 {
 	uint32_t fl_lines;
 	uint8_t offset;
-/* HTC_START Angie 20111019 - Fix FPS */
+	/* HTC_START Angie 20111019 - Fix FPS */
 	uint32_t fps_divider = Q10;
 
-	if (mode == SENSOR_PREVIEW_MODE)
+	if (s_ctrl->cam_mode == SENSOR_PREVIEW_MODE)
 		fps_divider = s_ctrl->fps_divider;
 	fl_lines = s_ctrl->curr_frame_length_lines;
 	offset = s_ctrl->sensor_exp_gain_info->vert_offset;
@@ -966,23 +903,23 @@ int32_t imx105_sensor_write_exp_gain(struct msm_sensor_ctrl_t *s_ctrl,
 		fl_lines = line + offset;
 	else
 		fl_lines = (fl_lines * fps_divider) / Q10;
-/* HTC_END */
+	/* HTC_END */
 
-/*HTC start Tom 20120209  - fix black screen caused by line count > frame length lines -5*/
-if (line > fl_lines -offset)
-	line = fl_lines -offset;
-/*HTC end*/
+	/*HTC start Tom 20120209  - fix black screen caused by line count > frame length lines -5*/
+	if (line > fl_lines -offset)
+		line = fl_lines -offset;
+	/*HTC end*/
 
 	s_ctrl->func_tbl->sensor_group_hold_on(s_ctrl);
 	msm_camera_i2c_write(s_ctrl->sensor_i2c_client,
-		s_ctrl->sensor_output_reg_addr->frame_length_lines, fl_lines,
-		MSM_CAMERA_I2C_WORD_DATA);
+			s_ctrl->sensor_output_reg_addr->frame_length_lines, fl_lines,
+			MSM_CAMERA_I2C_WORD_DATA);
 	msm_camera_i2c_write(s_ctrl->sensor_i2c_client,
-		s_ctrl->sensor_exp_gain_info->coarse_int_time_addr, line,
-		MSM_CAMERA_I2C_WORD_DATA);
+			s_ctrl->sensor_exp_gain_info->coarse_int_time_addr, line,
+			MSM_CAMERA_I2C_WORD_DATA);
 	msm_camera_i2c_write(s_ctrl->sensor_i2c_client,
-		s_ctrl->sensor_exp_gain_info->global_gain_addr, gain,
-		MSM_CAMERA_I2C_WORD_DATA);
+			s_ctrl->sensor_exp_gain_info->global_gain_addr, gain,
+			MSM_CAMERA_I2C_WORD_DATA);
 	s_ctrl->func_tbl->sensor_group_hold_off(s_ctrl);
 
 	pr_info("%s write fl_lines : %d ; write line_cnt : %d ; write gain : %d \n", __func__, fl_lines,  line, gain);
@@ -1002,12 +939,9 @@ static struct msm_sensor_fn_t imx105_func_tbl = {
 	.sensor_set_sensor_mode = msm_sensor_set_sensor_mode,
 	.sensor_mode_init = msm_sensor_mode_init,
 	.sensor_get_output_info = msm_sensor_get_output_info,
-	.sensor_config = imx105_sensor_config,
-	.sensor_open_init = imx105_sensor_open_init,
-	.sensor_release = imx105_sensor_release,
+	.sensor_config = msm_sensor_config,
 	.sensor_power_up = imx105_power_up,
 	.sensor_power_down = imx105_power_down,
-	.sensor_probe = msm_sensor_probe,
 	.sensor_i2c_read_fuseid = imx105_read_fuseid,
 };
 

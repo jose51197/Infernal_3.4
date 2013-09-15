@@ -30,6 +30,8 @@
 
 #define DIV_CEIL(x, y) (x/y + (x%y) ? 1 : 0)
 
+int32_t msm_camera_i2c_write_lens_position(int16_t lens_position);
+
 DEFINE_MUTEX(imx105_act_mutex);
 static struct msm_actuator_ctrl_t imx105_act_t;
 
@@ -105,7 +107,7 @@ static void imx105_poweroff_af(void)
 }
 
 int32_t imx105_msm_actuator_init_table(
-	struct msm_actuator_ctrl_t *a_ctrl)
+		struct msm_actuator_ctrl_t *a_ctrl)
 {
 	int32_t rc = 0;
 
@@ -126,7 +128,7 @@ int32_t imx105_msm_actuator_init_table(
 	}
 	a_ctrl->step_position_table =
 		kmalloc(sizeof(uint16_t) * (a_ctrl->set_info.total_steps + 1),
-			GFP_KERNEL);
+				GFP_KERNEL);
 
 	if (a_ctrl->step_position_table != NULL) {
 		uint16_t i = 0;
@@ -145,25 +147,25 @@ int32_t imx105_msm_actuator_init_table(
 					a_ctrl->step_position_table[i-1] + 4;
 			else
 #endif
-                     {
-			if (i <= imx105_nl_region_boundary1) {
-				a_ctrl->step_position_table[i] =
-					a_ctrl->step_position_table[i-1]
-					+ imx105_nl_region_code_per_step1;
-			} else if (i <= imx105_nl_region_boundary2) {
-				a_ctrl->step_position_table[i] =
-					a_ctrl->step_position_table[i-1]
-					+ imx105_nl_region_code_per_step2;
-			} else {
-				a_ctrl->step_position_table[i] =
-					a_ctrl->step_position_table[i-1]
-					+ imx105_l_region_code_per_step;
-			}
+			{
+				if (i <= imx105_nl_region_boundary1) {
+					a_ctrl->step_position_table[i] =
+						a_ctrl->step_position_table[i-1]
+						+ imx105_nl_region_code_per_step1;
+				} else if (i <= imx105_nl_region_boundary2) {
+					a_ctrl->step_position_table[i] =
+						a_ctrl->step_position_table[i-1]
+						+ imx105_nl_region_code_per_step2;
+				} else {
+					a_ctrl->step_position_table[i] =
+						a_ctrl->step_position_table[i-1]
+						+ imx105_l_region_code_per_step;
+				}
 
-			if (a_ctrl->step_position_table[i] > imx105_max_value)
-				a_ctrl->step_position_table[i] = imx105_max_value;
+				if (a_ctrl->step_position_table[i] > imx105_max_value)
+					a_ctrl->step_position_table[i] = imx105_max_value;
 
-		           /*pr_info("%s step_position_table[%d] = %d\n", __func__,i,a_ctrl->step_position_table[i]);*/
+				/*pr_info("%s step_position_table[%d] = %d\n", __func__,i,a_ctrl->step_position_table[i]);*/
 			}
 		}
 		a_ctrl->curr_step_pos = 0;
@@ -177,29 +179,29 @@ int32_t imx105_msm_actuator_init_table(
 }
 
 int32_t imx105_msm_actuator_move_focus(
-	struct msm_actuator_ctrl_t *a_ctrl,
-	int dir,
-	int32_t num_steps)
+		struct msm_actuator_ctrl_t *a_ctrl,
+		int dir,
+		int32_t num_steps)
 {
 	int32_t rc = 0;
 	int8_t sign_dir = 0;
 	int16_t dest_step_pos = 0;
 
 	pr_info("%s called, dir %d, num_steps %d\n",
-		__func__,
-		dir,
-		num_steps);
+			__func__,
+			dir,
+			num_steps);
 
 	/* Determine sign direction */
 	if (dir == MOVE_NEAR){
 		sign_dir = 1;
-	pr_info("%s MOVE_NEAR\n",
-		__func__);
+		pr_info("%s MOVE_NEAR\n",
+				__func__);
 	}
 	else if (dir == MOVE_FAR){
 		sign_dir = -1;
-	pr_info("%s MOVE_FAR\n",
-		__func__);
+		pr_info("%s MOVE_FAR\n",
+				__func__);
 	}
 	else {
 		pr_err("Illegal focus direction\n");
@@ -220,7 +222,7 @@ int32_t imx105_msm_actuator_move_focus(
 		return rc;
 
 	rc = a_ctrl->func_tbl.actuator_i2c_write(a_ctrl,
-		a_ctrl->step_position_table[dest_step_pos], NULL);
+			a_ctrl->step_position_table[dest_step_pos], NULL);
 	if (rc < 0) {
 		pr_err("%s focus move failed\n", __func__);
 		return rc;
@@ -247,37 +249,37 @@ static int32_t imx105_wrapper_i2c_write(struct msm_actuator_ctrl_t *a_ctrl, int1
 	int32_t rc = 0;
 
 
-       pr_info("%s next_lens_position : %d\n", __func__, next_lens_position);
+	pr_info("%s next_lens_position : %d\n", __func__, next_lens_position);
 
-       rc = msm_camera_i2c_write_lens_position(next_lens_position);
+	rc = msm_camera_i2c_write_lens_position(next_lens_position);
 
 	return rc;
 }
 
 int32_t imx105_act_write_focus(
-	struct msm_actuator_ctrl_t *a_ctrl,
-	uint16_t curr_lens_pos,
-	struct damping_params_t *damping_params,
-	int8_t sign_direction,
-	int16_t code_boundary)
+		struct msm_actuator_ctrl_t *a_ctrl,
+		uint16_t curr_lens_pos,
+		struct damping_params_t *damping_params,
+		int8_t sign_direction,
+		int16_t code_boundary)
 {
 	int32_t rc = 0;
 	uint16_t dac_value = 0;
-/*
-	pr_info("%s called, curr lens pos = %d, code_boundary = %d\n",
-		  __func__,
-		  curr_lens_pos,
-		  code_boundary);
-*/
+	/*
+	   pr_info("%s called, curr lens pos = %d, code_boundary = %d\n",
+	   __func__,
+	   curr_lens_pos,
+	   code_boundary);
+	   */
 	if (sign_direction == 1)
 		dac_value = (code_boundary - curr_lens_pos);
 	else
 		dac_value = (curr_lens_pos - code_boundary);
-/*
-	pr_info("%s dac_value = %d\n",
-	      __func__,
-	      dac_value);
-*/
+	/*
+	   pr_info("%s dac_value = %d\n",
+	   __func__,
+	   dac_value);
+	   */
 	rc = a_ctrl->func_tbl.actuator_i2c_write(a_ctrl, dac_value, NULL);
 
 	return rc;
@@ -288,7 +290,7 @@ static int32_t imx105_act_init_focus(struct msm_actuator_ctrl_t *a_ctrl)
 	int32_t rc = 0;
 
 	rc = a_ctrl->func_tbl.actuator_i2c_write(a_ctrl, a_ctrl->initial_code,
-		NULL);
+			NULL);
 	if (rc < 0)
 		pr_err("%s i2c write failed\n", __func__);
 	else
@@ -303,15 +305,15 @@ static const struct i2c_device_id imx105_act_i2c_id[] = {
 };
 
 static int imx105_act_config(
-	void __user *argp)
+		void __user *argp)
 {
 	pr_info("%s called\n", __func__);
 	return (int) msm_actuator_config(&imx105_act_t,
-		imx105_msm_actuator_info, argp); /* HTC Angie 20111212 - Rawchip */
+			imx105_msm_actuator_info, argp); /* HTC Angie 20111212 - Rawchip */
 }
 
 static int imx105_i2c_add_driver_table(
-	void)
+		void)
 {
 	int32_t rc = 0;
 
@@ -354,16 +356,16 @@ static struct v4l2_subdev_ops imx105_act_subdev_ops = {
 };
 
 static int32_t imx105_act_create_subdevice(
-	void *board_info,
-	void *sdev)
+		void *board_info,
+		void *sdev)
 {
 	pr_info("%s called\n", __func__);
-        
-        imx105_msm_actuator_info = (struct msm_actuator_info *)board_info;
+
+	imx105_msm_actuator_info = (struct msm_actuator_info *)board_info;
 
 	return (int) msm_actuator_create_subdevice(&imx105_act_t,
-		imx105_msm_actuator_info->board_info,
-		(struct v4l2_subdev *)sdev);
+			imx105_msm_actuator_info->board_info,
+			(struct v4l2_subdev *)sdev);
 }
 
 static struct msm_actuator_ctrl_t imx105_act_t = {
@@ -383,7 +385,7 @@ static struct msm_actuator_ctrl_t imx105_act_t = {
 
 	.set_info = {
 		.total_steps = IMX105_TOTAL_STEPS_NEAR_TO_FAR,		
-              .gross_steps = 3,	/*[TBD]*/
+		.gross_steps = 3,	/*[TBD]*/
 		.fine_steps = 1,	/*[TBD]*/
 
 	},
@@ -428,5 +430,6 @@ static struct msm_actuator_ctrl_t imx105_act_t = {
 	.damping[MOVE_FAR] = g_damping_params,
 };
 subsys_initcall(imx105_i2c_add_driver);
+
 MODULE_DESCRIPTION("imx105 actuator");
 MODULE_LICENSE("GPL v2");
