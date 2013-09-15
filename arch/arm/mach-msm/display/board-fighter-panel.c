@@ -1796,7 +1796,7 @@ static unsigned char fighter_shrink_pwm(int val)
 
 static int bl_level_old;
 
-static void mipi_dsi_set_backlight(struct msm_fb_data_type *mfd)
+static void fighter_mipi_dsi_set_backlight(struct msm_fb_data_type *mfd)
 {
 	struct mipi_panel_info *mipi;
 
@@ -1957,7 +1957,7 @@ static void fighter_set_backlight(struct msm_fb_data_type *mfd)
 	if (!mfd->panel_power_on)
 		return;
 
-	mipi_dsi_set_backlight(mfd);
+	fighter_mipi_dsi_set_backlight(mfd);
 }
 
 static int __devinit fighter_lcd_probe(struct platform_device *pdev)
