@@ -1817,9 +1817,7 @@ static void fighter_mipi_dsi_set_backlight(struct msm_fb_data_type *mfd)
 	}
 #endif
 
-	mdp4_dsi_cmd_dma_busy_wait(mfd);
-	mdp4_dsi_blt_dmap_busy_wait(mfd);
-	mipi_dsi_mdp_busy_wait(mfd);
+
 	mipi_dsi_cmds_tx(mfd, &fighter_panel_tx_buf, novatek_cmd_backlight_cmds,
 			ARRAY_SIZE(novatek_cmd_backlight_cmds));
 	bl_level_old = mfd->bl_level;
