@@ -143,6 +143,12 @@ config AMP_TFA9887L
         help
          NXP TFA9887L Speaker AMP Driver implemented by HTC.
 
+config AMP_TPA2051D3
+        tristate "TI TPA2051D3 Speaker AMP Driver"
+	depends on I2C=y
+        help
+         TI TPA2051D3 Speaker AMP Driver implemented by HTC.
+
 config INPUT_ISL29028
 	tristate "ISL29028 proximity and light sensor"
 	help

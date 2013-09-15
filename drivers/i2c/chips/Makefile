@@ -17,6 +17,7 @@ obj-$(CONFIG_AMP_TFA9887L)	+= tfa9887l.o
 obj-$(CONFIG_AMP_TPA6185)       += tpa6185.o
 obj-$(CONFIG_INPUT_CAPELLA_CM3629)      += cm3629.o
 obj-$(CONFIG_SENSORS_AKM8975)   += akm8975.o
+obj-$(CONFIG_AMP_TPA2051D3)		+= tpa2051d3.o
 obj-$(CONFIG_SENSORS_AKM8975_PANA_GYRO)   += akm8975_pana_gyro.o
 obj-$(CONFIG_SENSORS_PANASONIC_GYRO)	+= ewtzmu2.o
 obj-$(CONFIG_SENSORS_AK8963)    += akm8963.o
