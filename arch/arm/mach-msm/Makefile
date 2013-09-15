@@ -280,7 +280,7 @@ board-8960-all-objs += board-8960.o board-8960-camera.o board-8960-display.o boa
 board-8930-all-objs += board-8930.o board-8930-camera.o board-8930-display.o board-8930-pmic.o board-8930-storage.o board-8930-gpiomux.o devices-8930.o board-8930-gpu.o
 board-8064-all-objs += board-8064.o board-8064-pmic.o board-8064-storage.o board-8064-gpiomux.o board-8064-camera.o board-8064-display.o board-8064-gpu.o
 board-elite-all-objs += board-elite.o board-elite-gpiomux.o devices-8960.o board-8960-storage.o
-board-elite-all-objs += board-fighter.o board-fighter-gpiomux.o devices-8960.o board-8960-storage.o
+board-fighter-all-objs += board-fighter.o board-fighter-gpiomux.o devices-8960.o board-8960-storage.o
 # board-monarudo-all-objs += board-monarudo.o board-monarudo-pmic.o board-monarudo-storage.o board-monarudo-gpiomux.o board-monarudo-display.o board-monarudo-gpu.o board-monarudo-keypad.o board-monarudo-wifi.o
 board-monarudo-all-objs += board-monarudo.o board-monarudo-pmic.o board-monarudo-storage.o board-monarudo-gpiomux.o board-monarudo-display.o board-monarudo-gpu.o board-monarudo-keypad.o board-monarudo-wifi.o  board-monarudo-audio.o
 ifdef CONFIG_FB_MSM
@@ -311,6 +311,11 @@ obj-$(CONFIG_MACH_ELITE) += board-elite.o board-elite-regulator.o board-elite-gp
 obj-$(CONFIG_MACH_ELITE) += board-elite-keypad.o
 obj-$(CONFIG_MACH_ELITE) += htc_bdaddress.o
 obj-$(CONFIG_MACH_ELITE) += htc_util.o
+
+obj-$(CONFIG_MACH_FIGHTER) += board-fighter.o board-fighter-regulator.o board-fighter-gpiomux.o board-fighter-storage.o board-fighter-audio.o board-fighter-camera.o
+obj-$(CONFIG_MACH_FIGHTER) += board-fighter-keypad.o
+obj-$(CONFIG_MACH_FIGHTER) += htc_bdaddress.o
+obj-$(CONFIG_MACH_FIGHTER) += htc_util.o
 obj-$(CONFIG_MACH_VILLE) += board-ville.o board-ville-regulator.o board-ville-gpiomux.o board-ville-storage.o board-ville-audio.o board-ville-camera.o
 obj-$(CONFIG_MACH_VILLE) += board-ville-keypad.o
 obj-$(CONFIG_MACH_VILLE) += htc_bdaddress.o
