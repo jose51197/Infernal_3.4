@@ -23,6 +23,7 @@
 #include "devices.h"
 #include "board-8960.h"
 #include "board-storage-common-a.h"
+#include "board-jet.h"
 
 enum sdcc_controllers {
 	SDCC1,
@@ -47,8 +48,8 @@ static struct msm_mmc_reg_data mmc_vdd_reg_data[MAX_SDCC_CONTROLLER] = {
 	
 	[SDCC3] = {
 		.name = "sdc_vdd",
-		.high_vol_level = 2850000,
-		.low_vol_level = 2850000,
+		.high_vol_level = 2950000,
+		.low_vol_level = 2950000,
 		.hpm_uA = 600000, 
 	}
 };
@@ -65,7 +66,7 @@ static struct msm_mmc_reg_data mmc_vdd_io_reg_data[MAX_SDCC_CONTROLLER] = {
 	
 	[SDCC3] = {
 		.name = "sdc_vdd_io",
-		.high_vol_level = 2850000,
+		.high_vol_level = 2950000,
 		.low_vol_level = 1850000,
 		.always_on = 1,
 		.lpm_sup = 1,
@@ -113,8 +114,8 @@ static struct msm_mmc_pad_pull sdc1_pad_pull_off_cfg[] = {
 };
 
 static struct msm_mmc_pad_drv sdc3_pad_drv_on_cfg[] = {
-	{TLMM_HDRV_SDC3_CLK, GPIO_CFG_12MA},
-	{TLMM_HDRV_SDC3_CMD, GPIO_CFG_8MA},
+	{TLMM_HDRV_SDC3_CLK, GPIO_CFG_10MA},
+	{TLMM_HDRV_SDC3_CMD, GPIO_CFG_10MA},
 	{TLMM_HDRV_SDC3_DATA, GPIO_CFG_10MA}
 };
 
@@ -233,6 +234,7 @@ static unsigned int sdc3_sup_clk_rates[] = {
 #endif
 
 #ifdef CONFIG_MMC_MSM_SDC1_SUPPORT
+static unsigned int eva_emmcslot_type = MMC_TYPE_MMC;
 static struct mmc_platform_data msm8960_sdc1_data = {
 	.ocr_mask       = MMC_VDD_27_28 | MMC_VDD_28_29,
 #ifdef CONFIG_MMC_MSM_SDC1_8_BIT_SUPPORT
@@ -240,38 +242,62 @@ static struct mmc_platform_data msm8960_sdc1_data = {
 #else
 	.mmc_bus_width  = MMC_CAP_4_BIT_DATA,
 #endif
+	.slot_type = &eva_emmcslot_type,
 	.sup_clk_table	= sdc1_sup_clk_rates,
 	.sup_clk_cnt	= ARRAY_SIZE(sdc1_sup_clk_rates),
 	.nonremovable	= 1,
+	.hc_erase_group_def =1,
 	.vreg_data	= &mmc_slot_vreg_data[SDCC1],
 	.pin_data	= &mmc_slot_pin_data[SDCC1],
 	.msm_bus_voting_data = &sps_to_ddr_bus_voting_data,
 	.uhs_caps	= MMC_CAP_1_8V_DDR | MMC_CAP_UHS_DDR50,
+	.bkops_support = 1,
+};
+#endif
+
+#ifdef CONFIG_MMC_MSM_SDC2_SUPPORT
+static unsigned int sdc2_sup_clk_rates[] = {
+	400000, 24000000, 48000000
+};
+
+static struct mmc_platform_data msm8960_sdc2_data = {
+	.ocr_mask       = MMC_VDD_165_195,
+	.mmc_bus_width  = MMC_CAP_4_BIT_DATA,
+	.sup_clk_table  = sdc2_sup_clk_rates,
+	.sup_clk_cnt    = ARRAY_SIZE(sdc2_sup_clk_rates),
+	.pclk_src_dfab  = 1,
+	.vreg_data      = &mmc_slot_vreg_data[SDCC2],
+	.pin_data       = &mmc_slot_pin_data[SDCC2],
+	.sdiowakeup_irq = MSM_GPIO_TO_INT(90),
+	.msm_bus_voting_data = &sps_to_ddr_bus_voting_data,
 };
 #endif
 
 #ifdef CONFIG_MMC_MSM_SDC3_SUPPORT
+static unsigned int jet_sd_slot_type = MMC_TYPE_SD;
 static struct mmc_platform_data msm8960_sdc3_data = {
 	.ocr_mask       = MMC_VDD_27_28 | MMC_VDD_28_29,
 	.mmc_bus_width  = MMC_CAP_4_BIT_DATA,
 	.sup_clk_table	= sdc3_sup_clk_rates,
 	.sup_clk_cnt	= ARRAY_SIZE(sdc3_sup_clk_rates),
+	.slot_type = &jet_sd_slot_type,
 #ifdef CONFIG_MMC_MSM_SDC3_WP_SUPPORT
 	.wpswitch_gpio	= PM8921_GPIO_PM_TO_SYS(16),
 #endif
 	.vreg_data	= &mmc_slot_vreg_data[SDCC3],
 	.pin_data	= &mmc_slot_pin_data[SDCC3],
 #ifdef CONFIG_MMC_MSM_CARD_HW_DETECTION
-	.status_gpio	= PM8921_GPIO_PM_TO_SYS(26),
-	.status_irq	= PM8921_GPIO_IRQ(PM8921_IRQ_BASE, 26),
+	.status_gpio	= JET_GPIO_SD_CDETz,
+	.status_irq	= MSM_GPIO_TO_INT(JET_GPIO_SD_CDETz),
 	.irq_flags	= IRQF_TRIGGER_RISING | IRQF_TRIGGER_FALLING,
 	.is_status_gpio_active_low = true,
 #endif
+#if 0
 	.xpc_cap	= 1,
 	.uhs_caps	= (MMC_CAP_UHS_SDR12 | MMC_CAP_UHS_SDR25 |
 			MMC_CAP_UHS_SDR50 | MMC_CAP_UHS_DDR50 |
 			MMC_CAP_UHS_SDR104 | MMC_CAP_MAX_CURRENT_600),
-	.mpm_sdiowakeup_int = MSM_MPM_PIN_SDC3_DAT1,
+#endif
 	.msm_bus_voting_data = &sps_to_ddr_bus_voting_data,
 };
 #endif
@@ -294,7 +320,7 @@ static struct mmc_platform_data msm8960_sdc4_data = {
 };
 #endif
 
-void __init fighter_init_mmc(void)
+void __init msm8960_init_mmc(void)
 {
 #ifdef CONFIG_MMC_MSM_SDC1_SUPPORT
 	
