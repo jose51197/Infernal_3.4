@@ -159,7 +159,7 @@ static struct gpiomux_setting wcnss_5wire_active_cfg = {
 	.pull = GPIOMUX_PULL_DOWN,
 };
 
-static struct msm_gpiomux_config wcnss_5wire_interface[] = {
+struct msm_gpiomux_config wcnss_5wire_interface[] = {
 	{
 		.gpio = FIGHTER_WCN_CMD_DATA2,
 		.settings = {
@@ -193,6 +193,72 @@ static struct msm_gpiomux_config wcnss_5wire_interface[] = {
 		.settings = {
 			[GPIOMUX_ACTIVE]    = &wcnss_5wire_active_cfg,
 			[GPIOMUX_SUSPENDED] = &wcnss_5wire_suspend_cfg,
+		},
+	},
+};
+
+static struct gpiomux_setting cam_settings[5] = {
+	{
+		.func = GPIOMUX_FUNC_GPIO, /*suspend*/
+		.drv = GPIOMUX_DRV_8MA,
+		.pull = GPIOMUX_PULL_DOWN,
+		.dir = GPIOMUX_IN,
+	},
+
+	{
+		.func = GPIOMUX_FUNC_1, /*active 1*/
+		.drv = GPIOMUX_DRV_8MA,
+		.pull = GPIOMUX_PULL_NONE,
+	},
+
+	{
+		.func = GPIOMUX_FUNC_GPIO, /*active 2*/
+		.drv = GPIOMUX_DRV_8MA,
+		.pull = GPIOMUX_PULL_NONE,
+		.dir = GPIOMUX_OUT_LOW,
+	},
+
+	{
+		.func = GPIOMUX_FUNC_1, /*active 3*/
+		.drv = GPIOMUX_DRV_8MA,
+		.pull = GPIOMUX_PULL_NONE,
+	},
+
+	{
+		.func = GPIOMUX_FUNC_2, /*active 4*/
+		.drv = GPIOMUX_DRV_8MA,
+		.pull = GPIOMUX_PULL_NONE,
+	},
+
+};
+
+static struct msm_gpiomux_config fighter_cam_configs[] = {
+	{
+		.gpio = FIGHTER_CAM_MCLK1,
+		.settings = {
+			[GPIOMUX_ACTIVE]    = &cam_settings[4],
+			[GPIOMUX_SUSPENDED] = &cam_settings[2],
+		},
+	},
+	{
+		.gpio = FIGHTER_CAM_MCLK0,
+		.settings = {
+			[GPIOMUX_ACTIVE]    = &cam_settings[1],
+			[GPIOMUX_SUSPENDED] = &cam_settings[2],
+		},
+	},
+	{
+		.gpio = FIGHTER_CAM_I2C_SDA,
+		.settings = {
+			[GPIOMUX_ACTIVE]    = &cam_settings[3],
+			[GPIOMUX_SUSPENDED] = &cam_settings[0],
+		},
+	},
+	{
+		.gpio = FIGHTER_CAM_I2C_SCL,
+		.settings = {
+			[GPIOMUX_ACTIVE]    = &cam_settings[3],
+			[GPIOMUX_SUSPENDED] = &cam_settings[0],
 		},
 	},
 };
@@ -258,6 +324,9 @@ int __init fighter_gpiomux_init(void)
 		pr_err(KERN_ERR "msm_gpiomux_init failed %d\n", rc);
 		return rc;
 	}
+
+	msm_gpiomux_install(fighter_cam_configs,
+			ARRAY_SIZE(fighter_cam_configs));
 
 	msm_gpiomux_install(fighter_gsbi_configs,
 			ARRAY_SIZE(fighter_gsbi_configs));
