@@ -13,18 +13,9 @@
 #ifndef __ARCH_ARM_MACH_MSM_BOARD_FIGHTER_H
 #define __ARCH_ARM_MACH_MSM_BOARD_FIGHTER_H
 
-#include <linux/regulator/msm-gpio-regulator.h>
 #include <mach/irqs.h>
 #include <mach/rpm-regulator.h>
 #include <linux/mfd/pm8xxx/pm8921.h>
-#include <linux/i2c.h>
-#include <mach/msm_memtypes.h>
-#ifdef CONFIG_MSM_RTB
-#include <mach/msm_rtb.h>
-#endif
-#ifdef CONFIG_MSM_CACHE_DUMP
-#include <mach/msm_cache_dump.h>
-#endif
 
 /* Macros assume PMIC GPIOs and MPPs start at 1 */
 #define PM8921_GPIO_BASE		NR_GPIO_IRQS
@@ -40,17 +31,10 @@
 		{ {-1,  0, 0}, { 0,  0, -1}, {0, 1,  0} }  \
 					}
 
-extern struct gpio_regulator_platform_data
-	msm_gpio_regulator_pdata[] __devinitdata;
-
-extern struct regulator_init_data msm_saw_regulator_pdata_s5;
-extern struct regulator_init_data msm_saw_regulator_pdata_s6;
-
-extern struct rpm_regulator_platform_data fighter_rpm_regulator_pdata __devinitdata;
-
 extern struct platform_device msm8960_device_ext_5v_vreg __devinitdata;
 extern struct platform_device msm8960_device_ext_l2_vreg __devinitdata;
-extern struct platform_device msm8960_device_ext_3p3v_vreg __devinitdata;
+extern struct platform_device msm8960_device_rpm_regulator __devinitdata;
+
 extern struct pm8xxx_regulator_platform_data
 	msm_pm8921_regulator_pdata[] __devinitdata;
 
@@ -58,7 +42,7 @@ extern int msm_pm8921_regulator_pdata_len __devinitdata;
 
 #define GPIO_VREG_ID_EXT_5V		0
 #define GPIO_VREG_ID_EXT_L2		1
-#define GPIO_VREG_ID_EXT_3P3V		2
+#define GPIO_VREG_ID_EXT_3P3V           2
 
 #define FIGHTER_LCD_TE				(0) /* MDP_VSYNC_GPIO */
 #define FIGHTER_NC_GPIO_1			(1)
@@ -264,23 +248,12 @@ extern int msm_pm8921_regulator_pdata_len __devinitdata;
 #define FIGHTER_NC_PMGPIO_43		PMGPIO(43)
 #define FIGHTER_NC_PMGPIO_44		PMGPIO(44)
 
-extern struct msm_camera_board_info fighter_camera_board_info;
+extern struct regulator_init_data msm_saw_regulator_pdata_s5;
+extern struct regulator_init_data msm_saw_regulator_pdata_s6;
 
-void __init fighter_init_camera(void);
-void fighter_init_fb(void);
-void __init fighter_init_pmic(void);
-void fighter_init_mmc(void);
-int __init fighter_gpiomux_init(void);
-void __init msm8960_allocate_fb_region(void);
-void __init fighter_pm8921_gpio_mpp_init(void);
-void msm8960_mdp_writeback(struct memtype_reserve *reserve_table);
+extern struct rpm_regulator_platform_data msm_rpm_regulator_pdata __devinitdata;
+
 int __init fighter_init_keypad(void);
-
-#ifdef CONFIG_MSM_RTB
-extern struct msm_rtb_platform_data msm8960_rtb_pdata;
-#endif
-#ifdef CONFIG_MSM_CACHE_DUMP
-extern struct msm_cache_dump_platform_data msm8960_cache_dump_pdata;
-#endif
+int __init fighter_gpiomux_init(void);
 
 #endif
