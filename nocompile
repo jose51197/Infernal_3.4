@@ -1,0 +1,6 @@
+once those files compile i think we may have a working kernel, the order they are in means how difficult it is to repair them, from easiest to hardest for me 
+
+board-fighter-panel
+board-fighter-storage
+board-fighter-audio
+board-fighter
